@@ -45,7 +45,7 @@ const Space = () => {
                   y áreas disponibles en renta, pensados para terapeutas, guías
                   y profesionales de la salud y el crecimiento personal.
                 </p>
-                <ImageCarousel tags={tagSpaces} gap={5} />
+                <ImageCarousel tags={tagSpaces} gap={25} />
               </div>
             </div>
             <div className="space-card" style={styles.space1} />

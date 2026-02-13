@@ -51,6 +51,7 @@ export const getSpaceStyles = (isMobile: boolean) => ({
     flexDirection: "column" as const,
     gap: isMobile ? "15px" : "20px",
     padding: isMobile ? "30px" : "50px",
+    textAlign: "left" as const,
   },
   cardTextDescription: {
     fontSize: isMobile ? "16px" : "18px",
