@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import espacio_omnia from "@/assets/espacio_omnia.webp";
 import { navigationItems } from "@/constants";
 import { useSafeMediaQuery } from "@/hooks/useMediaQuery";
@@ -9,6 +10,8 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { mounted: isClient, isMatch: isMobile } =
     useSafeMediaQuery("(max-width: 600px)");
+  const location = useLocation();
+  const navigate = useNavigate();
 
 
   const toggleMobileMenu = () => {
@@ -24,6 +27,13 @@ const Navbar = () => {
     targetId: string
   ) => {
     e.preventDefault();
+    
+    if (location.pathname !== "/") {
+      navigate(`/#${targetId}`);
+      closeMobileMenu();
+      return;
+    }
+
     const element = document.getElementById(targetId);
     if (element) {
       // Get the navbar element to calculate its actual height
@@ -62,12 +72,23 @@ const Navbar = () => {
       }}
     >
       {/* Logo */}
-      <a href="/" style={{ display: "flex", alignItems: "center" }}>
+      <a 
+        href="/" 
+        onClick={(e) => {
+          e.preventDefault();
+          if (location.pathname !== "/") {
+            navigate("/");
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}
+        style={{ display: "flex", alignItems: "center" }}
+      >
         <img
           src={espacio_omnia}
           alt="Espacio Omnia"
-          width={200}
-          height={32}
+          width={180}
+          height={38}
           style={{ cursor: "pointer" }}
         />
       </a>
@@ -87,12 +108,7 @@ const Navbar = () => {
           {navigationItems.map((item) => (
             <li key={item.id} style={{ listStyle: "none" }}>
               <a
-                style={{
-                  color: "white",
-                  textDecoration: "none",
-                  fontSize: "16px",
-                  fontFamily: "var(--font-cabinet-grotesk)",
-                }}
+                className="nav-link"
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
               >

@@ -83,7 +83,7 @@ const Services = () => {
       <div style={styles.contentWrapper}>
         <div style={styles.cardsContainer}>
           {services.map((service) => (
-            <div key={service.id} className="card-service">
+            <div key={service.id} className="card-service" id={service.id}>
               <CardService service={service} />
             </div>
           ))}

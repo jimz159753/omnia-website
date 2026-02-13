@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import omniaLogo from "@/assets/espacio_omnia.webp";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -14,6 +15,8 @@ gsap.registerPlugin(ScrollTrigger);
 const Footer = () => {
   const footerRef = useRef(null);
   const [currentYear, setCurrentYear] = useState(2024); // Static fallback
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
@@ -24,6 +27,12 @@ const Footer = () => {
     targetId: string
   ) => {
     e.preventDefault();
+
+    if (location.pathname !== "/") {
+      navigate(`/#${targetId}`);
+      return;
+    }
+
     const element = document.getElementById(targetId);
     if (element) {
       // Get the navbar element to calculate its actual height
@@ -42,6 +51,10 @@ const Footer = () => {
       });
     }
   };
+// ... (rest of the code is unchanged until lines with <a href="/privacy-policy">)
+
+// ... (I need to replace the content correctly)
+// I will just replace the top import part and handleNavClick function first.
 
   useGSAP(
     () => {
@@ -159,27 +172,47 @@ const Footer = () => {
           <div className="footer-title">Nuestros Servicios</div>
           <div className="footer-list">
             <div className="footer-list-item">
-              <a className="footer-link" href="#masajes">
+              <a 
+                className="footer-link" 
+                href="#masajes"
+                onClick={(e) => handleNavClick(e, "masajes")}
+              >
                 Masajes Terapéuticos
               </a>
             </div>
             <div className="footer-list-item">
-              <a className="footer-link" href="#terapias">
+              <a 
+                className="footer-link" 
+                href="#terapias"
+                onClick={(e) => handleNavClick(e, "terapias")}
+              >
                 Terapias Holísticas
               </a>
             </div>
             <div className="footer-list-item">
-              <a className="footer-link" href="#bienestar">
+              <a 
+                className="footer-link" 
+                href="#bienestar"
+                onClick={(e) => handleNavClick(e, "bienestar")}
+              >
                 Bienestar Integral
               </a>
             </div>
             <div className="footer-list-item">
-              <a className="footer-link" href="#spa">
+              <a 
+                className="footer-link" 
+                href="#spa"
+                onClick={(e) => handleNavClick(e, "spa")}
+              >
                 Spa & Relajación
               </a>
             </div>
             <div className="footer-list-item">
-              <a className="footer-link" href="#renta">
+              <a 
+                className="footer-link" 
+                href="#renta"
+                onClick={(e) => handleNavClick(e, "renta")}
+              >
                 Renta de espacios
               </a>
             </div>
@@ -275,14 +308,14 @@ const Footer = () => {
           style={{ display: "flex", flexDirection: "row", gap: "2rem" }}
         >
           <div className="footer-list-item">
-            <a href="/privacy-policy" className="footer-link">
+            <Link to="/privacy-policy" className="footer-link">
               Política de Privacidad
-            </a>
+            </Link>
           </div>
           <div className="footer-list-item">
-            <a href="/terms-of-service" className="footer-link">
+            <Link to="/terms-of-service" className="footer-link">
               Términos de Servicio
-            </a>
+            </Link>
           </div>
         </div>
       </div>

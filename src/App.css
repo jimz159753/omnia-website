@@ -183,6 +183,16 @@
   cursor: pointer;
 }
 
+/* New class for navbar links to match footer link hover effect */
+.nav-link {
+  font-family: var(--font-cabinet-grotesk);
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
 .footer-copyright {
   font-family: var(--font-cabinet-grotesk);
   font-size: 0.9rem;
@@ -276,7 +286,7 @@
 }
 
 /* Prevent external libraries (like rsuite) from overriding link styles */
-a:not([class*="rs-"]):not(.footer-link):not(.login-link) {
+a:not([class*="rs-"]):not(.footer-link):not(.login-link):not(.nav-link) {
   text-decoration: inherit;
   color: inherit;
 }
