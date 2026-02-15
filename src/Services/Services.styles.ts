@@ -5,6 +5,7 @@ export const getAboutStyles = (_theme: unknown, isMobile: boolean) => ({
     gap: isMobile ? "50px" : "100px",
     justifyContent: "space-between",
     padding: isMobile ? "50px" : "100px",
+    backgroundColor: "#ffffff",
   } as const,
 
   title: {

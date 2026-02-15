@@ -33,6 +33,7 @@ const CardService = ({ service }: { service: IService }) => (
         style={{
           fontSize: "18px",
           fontFamily: "var(--font-cabinet-grotesk)",
+          color: "#788D9A",
         }}
       >
         {service.description}

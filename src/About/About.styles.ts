@@ -4,6 +4,7 @@ export const aboutStyles = (isMobile: boolean) => ({
     flexDirection: "column" as const,
     gap: isMobile ? "16px" : "20px",
     padding: isMobile ? "30px 0" : "50px 0",
+    backgroundColor: "#ffffff",
   },
   title: {
     width: "100%",
