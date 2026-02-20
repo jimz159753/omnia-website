@@ -37,8 +37,10 @@ export const calendarStyles = (isMobile: boolean) => ({
   calendar: {
     borderRadius: isMobile ? "0" : "15px",
     backgroundColor: "#fff",
-    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+    border: "1px solid rgba(134, 105, 75, 0.1)",
     width: "100%",
-    maxWidth: "800px",
+    maxWidth: "1000px",
+    overflow: "hidden",
   },
 });

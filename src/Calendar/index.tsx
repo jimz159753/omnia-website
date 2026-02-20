@@ -54,50 +54,12 @@ const holisticImages = [
   hol9,
 ];
 
-interface BookingCalendar {
-  id: string;
-  slug: string;
-  name: string;
-  isActive: boolean;
-  showOnMainPage: boolean;
-}
-
 const Calendar: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const styles = calendarStyles(isMobile);
-  
-  const [calendarSlug, setCalendarSlug] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchCalendar = async () => {
-      try {
-        const response = await fetch("/api/booking-calendars");
-        if (response.ok) {
-          const calendars: BookingCalendar[] = await response.json();
-          // Only show a calendar if it's explicitly marked for main page display
-          const mainPageCalendar = calendars.find((cal) => cal.showOnMainPage && cal.isActive);
-          
-          if (mainPageCalendar) {
-            setCalendarSlug(mainPageCalendar.slug);
-          }
-          // If no calendar is toggled for main page, don't show anything (calendarSlug stays null)
-        }
-      } catch (err) {
-        console.error("Error fetching calendar:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCalendar();
-  }, []);
-
-  // Don't render anything if no calendar is toggled for main page
-  if (!loading && !calendarSlug) {
-    return null;
-  }
+  console.log(isMobile);
 
   return (
     <section
@@ -114,45 +76,27 @@ const Calendar: React.FC = () => {
       </div>
 
       {/* Services Showcase Section */}
-      <div className={`flex ${isMobile ? "flex-col" : "flex-row"} items-center justify-center gap-12 w-full pt-12`}>
+      <div style={{display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "center", gap: "12px", width: "100%", paddingTop: "12px"}}>
         {/* Cosmetology Section */}
-        <div className="flex flex-col">
-          <div className="mb-6 px-4">
+          <div style={{width: "fit-content", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}} className="mb-6 px-4">
             <h3 className="text-[#86694B] font-serif text-center text-3xl mb-2 tracking-wide">Cosmetología</h3>
-            <div className="h-0.5 mx-auto w-16 bg-[#86694B]/30"></div>
+            <ImageCatalog images={cosmetologyImages} />
           </div>
-          <ImageCatalog images={cosmetologyImages} />
-        </div>
 
         {/* Holistic Section */}
-        <div className="flex flex-col">
-          <div className="mb-6 px-4">
+          <div style={{width: "fit-content", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}} className="mb-6 px-4">
             <h3 className="text-[#86694B] font-serif text-center text-3xl mb-2 tracking-wide">Holística</h3>
-            <div className="h-0.5 mx-auto w-16 bg-[#86694B]/30"></div>
+            <ImageCatalog images={holisticImages} />
           </div>
-          <ImageCatalog images={holisticImages} />
-        </div>
       </div>
 
       <div style={styles.calendarContainer}>
-        {loading ? (
-          <div style={{ ...styles.calendar, display: "flex", alignItems: "center", justifyContent: "center", minHeight: "500px" }}>
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#86694B]"></div>
-          </div>
-        ) : (
-          <iframe
-            src={`/book/${calendarSlug}`}
-            style={{
-              ...styles.calendar,
-              border: "none",
-              minHeight: isMobile ? "700px" : "800px",
-              width: "100%",
-              maxWidth: "900px",
-            }}
+          <iframe 
+            src="https://sinapz.up.railway.app/book/marzo-luisjc140992?embedded=true" 
+            style={styles.calendar}
             title="Booking Calendar"
-            loading="lazy"
-          />
-        )}
+            height="700px"
+          ></iframe>
       </div>
     </section>
   );
