@@ -45,21 +45,22 @@ const ImageCatalog: React.FC<ImageCarouselProps> = ({
           <img
             src={images[currentIndex]}
             alt={`Image ${currentIndex + 1}`}
-            width={isMobile ? '100%' : 600}
-            height={isMobile ? '100%' : 800}
-            className="w-[350px] h-full object-cover select-none"
+            width={isMobile ? "100%" : "600"}
+            height={isMobile ? "100%" : "800"}
+            className="w-[600px] h-full object-cover select-none"
+
           />
 
           {/* Navigation Arrows */}
           {images.length > 1 && (
             <>
               <FiChevronLeft
-                className="text-white p-2 rounded-full z-10 cursor-pointer"
                 style={{
                   position: "absolute",
                   left: "15px",
                   top: "50%",
                   zIndex: 10,
+                  cursor: "pointer",
                 }}
                 onClick={goToPrevious}
                 color="black"
@@ -67,12 +68,12 @@ const ImageCatalog: React.FC<ImageCarouselProps> = ({
               />
 
               <FiChevronRight
-                className="text-white p-2 rounded-full z-10 cursor-pointer"
                 style={{
                   position: "absolute",
                   right: "15px",
                   top: "50%",
                   zIndex: 10,
+                  cursor: "pointer",
                 }}
                 onClick={goToNext}
                 color="black"
