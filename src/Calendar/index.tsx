@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useMediaQuery, useTheme } from "@/hooks/useCustomMediaQuery";
 import { calendarStyles } from "./Calendar.styles";
 import ImageCatalog from "@/ImageCatalog";
