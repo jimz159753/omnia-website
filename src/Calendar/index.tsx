@@ -92,7 +92,7 @@ const Calendar: React.FC = () => {
 
       <div style={styles.calendarContainer}>
           <iframe 
-            src="https://sinapz.up.railway.app/book/marzo-luisjc140992?embedded=true" 
+            src="https://sinapz.up.railway.app/book/servicios-luisjc140992?embedded=true" 
             style={styles.calendar}
             title="Booking Calendar"
             height="700px"

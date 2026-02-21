@@ -8,6 +8,11 @@ import mirrors from "@/assets/mirrors.webp";
 import plants from "@/assets/plants.webp";
 import products from "@/assets/products.webp";
 import yard from "@/assets/yard.webp";
+import candles from "@/assets/candles.webp";
+import ceremony1 from "@/assets/ceremony1.webp";
+import ceremony2 from "@/assets/ceremony2.webp";
+import workshop from "@/assets/workshop.webp";
+import fire from "@/assets/fire.webp";
 
 export interface IService {
   id: string;
@@ -146,6 +151,39 @@ export const aboutImages = [
   {
     id: 6,
     image: products,
+  },
+  {
+    id: 7,
+    image: yard,
+  },
+];
+
+
+export const ceremonyImages = [
+  {
+    id: 1,
+    image: candles,
+  },
+  {
+    id: 2,
+    image: ceremony1,
+  },
+
+  {
+    id: 3,
+    image: workshop,
+  },
+  {
+    id: 4,
+    image: fire,
+  },
+  {
+    id: 5,
+    image: plants,
+  },
+  {
+    id: 6,
+    image: ceremony2,
   },
   {
     id: 7,

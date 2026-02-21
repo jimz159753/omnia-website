@@ -1,6 +1,7 @@
 "use client";
 import { ImageCarousel } from "../ImageCarousel";
 import { aboutImages } from "@/constants";
+import { ceremonyImages } from "@/constants";
 import { useTheme, useMediaQuery } from "@/hooks/useCustomMediaQuery";
 import { aboutStyles } from "./About.styles";
 
@@ -27,7 +28,7 @@ const About = () => {
         />
         <ImageCarousel
           isMobile={isMobile}
-          images={aboutImages.map((image) => image.image)}
+          images={ceremonyImages.map((image) => image.image)}
           direction="right"
           speed={35}
         />
